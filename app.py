@@ -1,6 +1,7 @@
 from flask import Flask
 import logging
 import requests
+import time
 
 app = Flask(__name__)
 
@@ -20,8 +21,10 @@ logging.basicConfig(
 @app.route("/say/<name>")
 def greeting(name):
     
-    logging.info("Greet-Client is Started")
+    g  = time.time()
     x = requests.get('http://greeting-int-service.test:500/greeting/'+name)
+    t = (time.time() - g)
+    logging.info('Greet-Client is Started , Respose Time : %s',t)
     if x:
         return x.text
     else :
