@@ -24,7 +24,7 @@ def greeting(name):
     g  = time.time()
     x = requests.get('http://greeting-int-service.test:500/greeting/'+name)
     t = (time.time() - g)
-    logging.info('Greet-Client is Started , Respose Time : %s',t)
+    logging.info('Greet-Client is Started , Respose_Time=%ss',t)
     if x:
         return x.text
     else :
