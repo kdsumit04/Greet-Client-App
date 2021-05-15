@@ -13,7 +13,7 @@ spec:
         app: greet-client
     spec:
       containers:
-      - name: greet-server
+      - name: greet-client
         image: kdsumit04/greet-client:latest
         ports:
         - containerPort: 90
