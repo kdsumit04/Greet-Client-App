@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: greet-client
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -17,3 +17,17 @@ spec:
         image: kdsumit04/greet-client:latest
         ports:
         - containerPort: 90
+        volumeMounts:
+        - name: config
+          mountPath: /app/config
+        - name: secret
+          mountPath: /app/secret  
+      volumes:
+      - name: config
+        configMap:
+          name: greet-client-config
+      - name: secret
+        secret:
+          secretName: greet-client-secret
+
+
